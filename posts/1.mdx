@@ -1,0 +1,116 @@
+---
+title: How I Built This Site
+description: A walkthrough of how I built this site as my first post.
+---
+
+# How I Built This Site
+
+*Posted {(new Date(1684819235421)).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}*
+
+Howdy.
+
+I'm Zachary Montgomery. I do more things than I can keep track of, so if you are interested in me and what I do, keep following my blog. I'll be posting about my projects, my thoughts, my writing, my music, books I've read, running, and anything else that I feel like writing about.
+
+This marks the beginning of my blog. Truthfully, I just created this repository and cloned it to my laptop. Planning to make this site in Next.js as a static site. To start, I'll just be writing markdown files and pushing them to the repo. I know how to do better, but this blog isn't popular [and anyways, I'm too busy] to justify the time it would take. No, I'm not going to stoop to the level of using someone else's blog platform. I'm a developer, so I deserve to suffer through rebuilding everything.
+
+There aren't any other files in this repo, so this post will be a walkthrough on how I built this site. This is not a tutorial, just me bringing you along for the ride. I'm not going to explain everything, but I'll try to explain the important bits.
+
+## Step 1: Create a new repo and clone it
+
+You can do this on GitHub or on your local machine. I did it on GitHub because I'm lazy. [The amount of times I've seen `warning: You appear to have cloned an empty repository.` is insane.]
+
+## Step 2: Create a new Next.js project
+
+This presupposes that you have Node.js, yarn, and everything else installed. I like TypeScript and Tailwind when setting this up.
+
+```bash
+yarn create next-app
+```
+
+[Then copy all of the files out of `my-app` and into the root of your repo because I'm too lazy to figure out how to make it work within the same directory.]
+
+## Step 3: Set up Tailwind CSS with CSSNano
+
+I'm not going to explain this. I'm just going to give you the commands.
+
+```bash
+yarn add -D cssnano@latest
+```
+
+Since Autoprefixer is already set up, and Next.js handles PostCSS through Webpack [I am 99% sure], all I need to do is add CSSNano to make sure y'all get *that blazing fast minified CSS*. Because of course that's the bottleneck.
+
+Anyways, the PostCSS and Next.js docs conflict on how to include them, but since we are in the Next ecosystem, I'm going to follow the Next docs. Key line: `Do not use require() to import the PostCSS Plugins.` It was, as usual, so simple I got tricked into researching it for too long.
+
+---
+
+Alright so update I have no clue if this is working or not and I'm not moving on until it does. Gonna listen to Gregory Alan Isakov and debug the least important part of this project with full attention.
+
+---
+
+Where do these minifications even come from by default? Is the default for such a small file just as good at CSSNano and that's why I can't see it? I wish there was a console confirmation that it was working. I'm going to try it a bit more.
+
+---
+
+Alright well now I am pretty sure it is working, because keeping it in `postcss.config.js` but using `yarn remove cssnano` threw an error at build time. So I'm going to assume it is working and move on. Pretty sure I wasted an hour of my life on this.
+
+## Step 4: Set up Sentry
+
+I'm not going to explain this either. I'm just going to give you the commands. Today's Sentry loading message was 'Awaiting solution to the halting problem'.
+
+```bash
+npx @sentry/wizard@latest -i nextjs
+```
+
+It even auto-detected that I was using yarn. Great product.
+
+## Step 5: Precompile List of Future Improvements
+
+And it shall reside here:
+
+- Set up GitHub action for CI/CD
+- Keep posts in a database
+- Add a search bar with a vector search engine
+- Add tags for posts
+- Add a newsletter
+- Add a membership system
+- Add liking for posts
+- Add redis as a cache
+- Add donations
+
+## Step 6: Begin Designing the Site
+
+This one is a bit more in-depth. It's a combination of code and aesthetic design. Since my code is *always* self-documenting, I'll just explain the design.
+
+Actually, no I won't. Feel free to look at it.
+
+## Step 7: Spend 3 Hours Writing a Contact Form
+
+If you want to see a beautiful contact form in action, go to [the development page](/design). Try it out! Bonus points if you actually want to start a project with me.
+
+## Step 8: Find a MD to HTML converter
+
+Nope, not going to talk about this one. I'm getting tired of typing. It doesn't even seem that hard I'm just going to use [marked](https://github.com/markedjs/marked "This is a title").
+
+## Step 9: Realize I'm Never Going to Finish This Post
+
+This website will be a living testament to my growing interest in web development. I'm going to keep adding to it. For now, it's simple.
+
+But it doesn't have to be perfect to be beautiful.
+
+## Step 10: Deploy
+
+This bit should actually be easy. After creating some breadcrumbs, working on dynamic metadata, and making a few other quality of life improvements, I'll be ready to deploy.
+
+I already have my own VPS so all I need to do is make a Dockerfile and deploy.
+
+## Step 11: Add Plausible Analytics
+
+I haven't written a privacy policy yet, but I'm going to use Plausible Analytics. Just want to see how many people are visiting my site.
+
+## Step 12: Add a Sitemap
+
+Next.js has a plugin for this. I'm going to use it.
+
+---
+
+Update: It doesn't work with the app directory. Whatever, back to deploying.
