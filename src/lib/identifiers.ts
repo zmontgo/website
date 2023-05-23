@@ -1,5 +1,5 @@
 import { ulid } from 'ulid';
-import { redis } from '@/lib/redis';
+import redis from '@/lib/redis';
 
 export async function createIdentifier() {
   // Generate a unique ID for this request
