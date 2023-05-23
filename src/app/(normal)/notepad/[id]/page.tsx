@@ -35,7 +35,7 @@ const components = {
   h2: (props: any) => <h2 className={'text-4xl mt-16 mb-2 ' + koulen.className} {...props} />,
   h3: (props: any) => <h3 className={'text-2xl mt-16 mb-1 ' + koulen.className} {...props} />,
   p: (props: any) => <p className='mb-6 max-w-prose leading-8' {...props} />,
-  blockquote: (props: any) => <blockquote className='mb-8 max-w-prose leading-10 pl-4 border-l-2 border-secondary font-mono' {...props} />,
+  blockquote: (props: any) => <blockquote className='mb-8 max-w-xl leading-tight text-base pl-4 border-l-2 border-secondary/60 font-mono' {...props} />,
   hr: (props: any) => <hr className='my-8 block w-16 h-1 bg-secondary/80 border-none' {...props} />,
   pre: (props: any) => <PrismCodeblock {...props} />,
   code: (props: any) => <code className={'font-mono text-sm bg-codeblocks text-white p-1 rounded ' + firaCode.className} {...props} />,
