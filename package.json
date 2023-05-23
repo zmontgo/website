@@ -7,13 +7,14 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build && next bundle-analyze"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.3",
-    "@sentry/nextjs": "^7.52.1",
+    "@rollbar/react": "^0.11.1",
     "@types/marked": "^5.0.0",
     "@types/node": "20.2.3",
     "@types/react": "18.2.6",
@@ -34,9 +35,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-select": "^5.7.3",
+    "rollbar": "^2.26.1",
+    "sharp": "^0.32.1",
     "tailwindcss": "^3.3.2",
     "typescript": "5.0.4",
-    "ulid": "^2.3.0"
+    "ulid": "^2.3.0",
+    "webpack": "^5.83.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@next/bundle-analyzer": "^13.4.3"
+  }
 }

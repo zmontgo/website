@@ -22,7 +22,7 @@ export default async function Design() {
           <h1 className={'text-6xl md:text-8xl tracking-wider ' + koulen.className}>Web Design</h1>
           <p>Carefully-wrought websites built from the ground up.</p>
           <ContactForm id={id} />
-          <p className="mt-4">Prefer email? Don't worry, I'll respond just as quick there.</p>
+          <p className="mt-4">Prefer email? Don&apos;t worry, I&apos;ll respond just as quick there.</p>
           <Link href="mailto:zachmontgo@iodinedev.com" rel="noopener noreferrer" target="_blank" className="underline">zachmontgo@iodinedev.com</Link>
         </div>
       </div>

@@ -133,7 +133,7 @@ export default function ContactForm({ id }: { id: string }) {
         { formErrors.subject.length > 0 && <p className="text-red-500">{formErrors.subject}</p> }
       </div>
       <div className="relative w-full">
-        <label htmlFor="message" className={"absolute text-secondary/70 top-3 uppercase " + (form.message.length > 0 ? 'hidden' : '')}>I'd Like To Chat About</label>
+        <label htmlFor="message" className={"absolute text-secondary/70 top-3 uppercase " + (form.message.length > 0 ? 'hidden' : '')}>I&apos;d Like To Chat About</label>
         <textarea name="message" id="message" cols={30} rows={5} required onChange={e => updateForm(e.target.name, e.target.value)} className="bg-transparent border-b-2 border-dashed border-secondary py-3 focus:outline-none w-full" />
         { formErrors.message.length > 0 && <p className="text-red-500">{formErrors.message}</p> }
       </div>

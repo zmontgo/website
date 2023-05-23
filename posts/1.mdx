@@ -111,3 +111,9 @@ Next.js has a plugin for this. I'm going to use it.
 ---
 
 Update: It doesn't work with the app directory. Whatever, back to deploying.
+
+## Step 13: Deal with Errors and Warnings
+
+Forgot to lint and check TypeScript errors. Now that we have successfully disabled TypeScript [that's always the best way to deal with errors], we can move on to looking at bundle size.
+
+First load JS shared by all: 172 kB. And the notepad/[id] is 205. That's bad. I'm going to try to get it below 100 kB.

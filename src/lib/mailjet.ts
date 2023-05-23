@@ -1,9 +1,9 @@
-import Mailjet from "node-mailjet";
+import { Client } from 'node-mailjet';
 
 if (!process.env.MAILJET_API_KEY) throw new Error('Missing MAILJET_API_KEY env var');
 if (!process.env.MAILJET_API_SECRET) throw new Error('Missing MAILJET_API_SECRET env var');
 
-const mailjet = Mailjet.Client.apiConnect(
+const mailjet = Client.apiConnect(
   process.env.MAILJET_API_KEY,
   process.env.MAILJET_API_SECRET
 );

@@ -39,7 +39,7 @@ const components = {
   ul: (props: any) => <ul className='list-disc flex flex-col gap-4 list-outside ml-6 mb-6' {...props} />,
   ol: (props: any) => <ol className='list-decimal list-inside mb-6' {...props} />,
   li: (props: any) => <li className='max-w-prose' {...props} />,
-  img: (props: any) => <Image {...props} width={800} height={600} className='rounded shadow max-w-full lg:max-w-md' loading='lazy' />,
+  img: (props: any) => <Image {...props} width={800} height={600} className='rounded shadow max-w-full lg:max-w-md' loading='lazy' alt={props.alt || ''} />,
 }
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
@@ -84,6 +84,9 @@ export default async function Post({ params }: { params: { id: string } }) {
   return (
     <PostLayout url={{ url: `/notepad/${params.id}`, label: title}} title={title} date={data.date} tags={data.tags}>
       <BackToTop />
+      { /* This is a promise, but since it's a JSX component, we can't await it. */ }
+      { /* Support for this is coming in the next version of Next, but for now, we disable typescript's error. */ }
+      {/* @ts-ignore */}
       <MDXRemote source={content} components={components} />
     </PostLayout>
   )

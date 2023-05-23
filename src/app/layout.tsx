@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Script from 'next/script'
 
 import './globals.css'
 import { Open_Sans } from 'next/font/google'
@@ -19,13 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script defer data-domain="zachmontgomery.com" src="https://admin.iodinedev.com/js/script.js"></script>
-      </head>
       <body className={openSans.className}>
         <div className="bg-primary text-secondary min-h-screen text-lg">
           {children}
         </div>
+        <Script defer data-domain="zachmontgomery.com" src="https://admin.iodinedev.com/js/script.js" />
       </body>
     </html>
   )
