@@ -5,7 +5,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
+  nextConfig.env = {
+    SITE_URL: 'http://localhost:3000',
+  }
+
+  module.exports = withBundleAnalyzer(nextConfig);
+} else {
   nextConfig.images = {
     domains: ['zachmontgomery.com'],
   } 
@@ -15,10 +21,4 @@ if (process.env.NODE_ENV === 'production') {
   }
 
   module.exports = nextConfig;
-} else {
-  nextConfig.env = {
-    SITE_URL: 'http://localhost:3000',
-  }
-
-  module.exports = withBundleAnalyzer(nextConfig);
 }
