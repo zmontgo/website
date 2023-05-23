@@ -6,15 +6,18 @@ import matter from 'gray-matter';
 
 import { MDXRemote } from 'next-mdx-remote/rsc'
 
-import PostLayout from '../PostLayout'
+import PostLayout from '../../components/PostLayout'
 import FancyLink from '../../components/FancyLink'
 import PrismCodeblock from '../../components/PrismCodeblock'
 
+import AccessibilityPanel from '../../components/AccessibilityPanel'
 import BackToTop from '../../components/BackToTop'
 
 import { getPostContent, getPostNames } from '@/lib/posts'
 
 import { Koulen, Fira_Code } from 'next/font/google'
+
+import type { AccessibilityOptions } from '../../components/PostLayout';
 
 const koulen = Koulen({
   subsets: ['latin'],
@@ -36,8 +39,8 @@ const components = {
   hr: (props: any) => <hr className='my-8 block w-16 h-1 bg-secondary/80 border-none' {...props} />,
   pre: (props: any) => <PrismCodeblock {...props} />,
   code: (props: any) => <code className={'font-mono text-sm bg-codeblocks text-white p-1 rounded ' + firaCode.className} {...props} />,
-  ul: (props: any) => <ul className='list-disc flex flex-col gap-4 list-outside ml-6 mb-6' {...props} />,
-  ol: (props: any) => <ol className='list-decimal list-inside mb-6' {...props} />,
+  ul: (props: any) => <ul className='list-disc flex flex-col gap-3 list-outside ml-6 mb-6' {...props} />,
+  ol: (props: any) => <ol className='list-decimal flex flex-col gap-3 list-outside ml-6 mb-6' {...props} />,
   li: (props: any) => <li className='max-w-prose' {...props} />,
   img: (props: any) => <Image {...props} width={800} height={600} className='rounded shadow max-w-full lg:max-w-md' loading='lazy' alt={props.alt || ''} />,
 }
@@ -79,10 +82,10 @@ export default async function Post({ params }: { params: { id: string } }) {
   }
 
   const { data, content } = matter(post);
-  const { title } = data;
+  const { title, author } = data;
 
   return (
-    <PostLayout url={{ url: `/notepad/${params.id}`, label: title}} title={title} date={data.date} tags={data.tags}>
+    <PostLayout url={{ url: `/notepad/${params.id}`, label: title}} title={title} author={author} date={data.date} tags={data.tags}>
       <BackToTop />
       { /* This is a promise, but since it's a JSX component, we can't await it. */ }
       { /* Support for this is coming in the next version of Next, but for now, we disable typescript's error. */ }

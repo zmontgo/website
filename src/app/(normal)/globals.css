@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* We have to use !important here because Tailwind sets these properties
+   on the elements, so these rules are not specific enough to override them. */
+
+.fauxbold {
+  font-weight: bold!important;
+  font-stretch: expanded!important;
+}
+
+li ul, li ol {
+  @apply gap-2 mb-1 ml-8 !important;
+  @apply mt-1;
+}

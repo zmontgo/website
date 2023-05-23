@@ -1,125 +1,99 @@
 ---
-title: How I Built This Site
-description: A walkthrough of how I built this site as my first post.
-date: 1684819235421
+title: Colorado, A Reflection
+description: A poem and a recall of my time in Colorado.
+author: Zachary Montgomery
+date: 1684875719625
 ---
 
-Howdy.
+There have been a thousand poets, authors, artists, musicians, thinkers, and feelers who have tried to crystallize the feeling of this place into words. The one common thread is awestruck naivety.
 
-I'm Zachary Montgomery. I do more things than I can keep track of, so if you are interested in me and what I do, keep following my blog. I'll be posting about my projects, my thoughts, my writing, my music, books I've read, running, and anything else that I feel like writing about.
+In the most naive and genuine way I can, I will take my turn. This poem was written late in the night, staring through a window of my memory, as I recalled my trip to Colorado.
 
-This marks the beginning of my blog. Truthfully, I just created this repository and cloned it to my laptop. Planning to make this site in Next.js as a static site. To start, I'll just be writing markdown files and pushing them to the repo. I know how to do better, but this blog isn't popular [and anyways, I'm too busy] to justify the time it would take. No, I'm not going to stoop to the level of using someone else's blog platform. I'm a developer, so I deserve to suffer through rebuilding everything.
+**Colorado**\
+*By Zachary Montgomery*
 
-There aren't any other files in this repo, so this post will be a walkthrough on how I built this site. This is not a tutorial, just me bringing you along for the ride. I'm not going to explain everything, but I'll try to explain the important bits.
+```
+Everything's just fuller here,
+The memory is fuller too.
+I need to sit for ages, silently,
+Or I'll never feel that truth.
 
-## Step 1: Create a new repo and clone it
+I'll remember here forever,
+I'll remember remembering too,
+The now and future endeavor,
+The things I've yet to do.
 
-You can do this on GitHub or on your local machine. I did it on GitHub because I'm lazy. [The amount of times I've seen `warning: You appear to have cloned an empty repository.` is insane.]
+The painting's beautiful, isn't it?
+Those craggy timeless stones,
+Or the reaching hands of flora,
+Like starry astral bones.
 
-## Step 2: Create a new Next.js project
-
-This presupposes that you have Node.js, yarn, and everything else installed. I like TypeScript and Tailwind when setting this up.
-
-```bash
-yarn create next-app
+It's really softly peaceful here,
+And it's beautiful here, too,
+I'll sit here for hours, just listening,
+Rephrasing; I'll remember you.
 ```
 
-[Then copy all of the files out of `my-app` and into the root of your repo because I'm too lazy to figure out how to make it work within the same directory.]
+Stepping out of the airport was the moment I realized I would never be able to fully feel it. A week is too short to know you love a place.
+A transcient moment, too short to even realize what you're processing. In some ways, I feel like life is just a moment. Too short to realize what you're processing, too short to realize you love it.
 
-## Step 3: Set up Tailwind CSS with CSSNano
+From the start, all around me were skies and mountains with trees, so impressive as to feel like they were impressed upon the sky's mantle, and not the earth's, and it reached up and all around me.
+The air was thinner and sweeter, and as the night fell it brought a chill, a gentle chill that made me feel alive, as though I was in and part of a place that was alive.
 
-I'm not going to explain this. I'm just going to give you the commands.
+I am not sad I have left. It forces me to remember. I remember, also, a quote from CS Lewis' "Out of the Silent Planet":
 
-```bash
-yarn add -D cssnano@latest
-```
+> *"A pleasure is full grown only when it is remembered. You are speaking as if the pleasure were one thing and the memory another. It is all one thing."*
 
-Since Autoprefixer is already set up, and Next.js handles PostCSS through Webpack [I am 99% sure], all I need to do is add CSSNano to make sure y'all get *that blazing fast minified CSS*. Because of course that's the bottleneck.
+This sentiment strikes me powerfully. To be forced to leave &mdash; to reckon with the fact that you will never experience those exact moments again &mdash; is to be forced to remember.
+To remember is to experience it. When I was there, my present self was experiencing half, and I trusted my future self, my memory, to experience the other half. Now, I am my future self, and I experience it even now.
 
-Anyways, the PostCSS and Next.js docs conflict on how to include them, but since we are in the Next ecosystem, I'm going to follow the Next docs. Key line: `Do not use require() to import the PostCSS Plugins.` It was, as usual, so simple I got tricked into researching it for too long.
+I remember a thousand details I couldn't possibly hope to recall. The feeling of the wind, the sun, the smell of the air and the trees, the shape of the mountains against the night sky, a book by a fireplace.
+The feel of my bed at night, the taste of the food, walking for hours in the dark talking with a friend with a smile on my face. Even exhaustion, little fears, the ache of walking all day, or the plane ride home.
+All of these sum to an experience. I remember it all, and I experience it all.
 
----
+But what is memory good for without some twinge of regret? I miss it, and I feel that ancient, pervasive awareness that I did not do everything I could have. Did not experience everything I could have, did not take every moment to love it.
+I am commonly caught in my head, thinking about my future. An old and familiar estrangement from the present. I am not sad I have left, but I am sad I did not love it more. I am not distraught, were I to be perfect, I wouldn't have enjoyed it at all.
+But I am regretful, and in the most trite and cliche way I can word it, I wish I could go back and do it again. I wish I could walk lock-step, right alongside my memory, right alongside my plans.
+In a way, this regret is a gift, and it makes the experience *now* all the more powerful.
 
-Alright so update I have no clue if this is working or not and I'm not moving on until it does. Gonna listen to Gregory Alan Isakov and debug the least important part of this project with full attention.
+I have no ultimate point about this post. My propensity for 
+Just simple, complex introspection. I will never be able to live that week again, but I am content that I will experience it for the rest of my life, and I will love it.
 
----
-
-Where do these minifications even come from by default? Is the default for such a small file just as good at CSSNano and that's why I can't see it? I wish there was a console confirmation that it was working. I'm going to try it a bit more.
-
----
-
-Alright well now I am pretty sure it is working, because keeping it in `postcss.config.js` but using `yarn remove cssnano` threw an error at build time. So I'm going to assume it is working and move on. Pretty sure I wasted an hour of my life on this.
-
-## Step 4: Set up Sentry
-
-I'm not going to explain this either. I'm just going to give you the commands. Today's Sentry loading message was 'Awaiting solution to the halting problem'.
-
-```bash
-npx @sentry/wizard@latest -i nextjs
-```
-
-It even auto-detected that I was using yarn. Great product.
-
-## Step 5: Precompile List of Future Improvements
-
-And it shall reside here:
-
-- Set up GitHub action for CI/CD
-- Keep posts in a database
-- Add a search bar with a vector search engine
-- Add tags for posts
-- Add a newsletter
-- Add a membership system
-- Add liking for posts
-- Add redis as a cache
-- Add donations
-
-## Step 6: Begin Designing the Site
-
-This one is a bit more in-depth. It's a combination of code and aesthetic design. Since my code is *always* self-documenting, I'll just explain the design.
-
-Actually, no I won't. Feel free to look at it.
-
-## Step 7: Spend 3 Hours Writing a Contact Form
-
-If you want to see a beautiful contact form in action, go to [the development page](/design). Try it out! Bonus points if you actually want to start a project with me.
-
-## Step 8: Find a MD to HTML converter
-
-Nope, not going to talk about this one. I'm getting tired of typing. It doesn't even seem that hard I'm just going to use [marked](https://github.com/markedjs/marked "This is a title").
-
-## Step 9: Realize I'm Never Going to Finish This Post
-
-This website will be a living testament to my growing interest in web development. I'm going to keep adding to it. For now, it's simple.
-
-But it doesn't have to be perfect to be beautiful.
-
-## Step 10: Deploy
-
-This bit should actually be easy. After creating some breadcrumbs, working on dynamic metadata, and making a few other quality of life improvements, I'll be ready to deploy.
-
-I already have my own VPS so all I need to do is make a Dockerfile and deploy.
-
-## Step 11: Add Plausible Analytics
-
-I haven't written a privacy policy yet, but I'm going to use Plausible Analytics. Just want to see how many people are visiting my site.
-
-## Step 12: Add a Sitemap
-
-Next.js has a plugin for this. I'm going to use it.
+I already have plans to go back, and I suspect I will love that time even more. But for right now, I am happy to write this, to read this, as this is deeply a part of my experience. I lived, and I loved it.
 
 ---
 
-Update: It doesn't work with the app directory. Whatever, back to deploying.
+In other news, welcome to my new blog! This is my professional website, and my profession is curiosity.
+Topics I hope to cover:
 
-## Step 13: Deal with Errors and Warnings
+- Computer science
+  - Application design
+  - Programming languages
+  - Networking
+  - Scalability
+  - Security
+  - Cryptography
+  - OSINT
+  - Reverse engineering
+  - Other stuff
+- Philosophy
+- Poetry
+- Long-distance running
+- Creating and consuming music
+- Baking and cooking
+- Novel writing
+- Photography
+- Memories and experiences
+- How-to guides
+- Other stuff
 
-Forgot to lint and check TypeScript errors. Now that we have successfully disabled TypeScript [that's always the best way to deal with errors], we can move on to looking at bundle size.
+I like to take naive passion and turn it into beautiful things. I am also a Christian, and may post about that from time to time.
 
-First load JS shared by all: 172 kB. And the notepad/[id] is 205. That's bad. I'm going to try to get it below 100 kB.
+You may notice a distinctive lack of features. I will be working on them intermittently, but I wanted to get this out there. In the future we'll be adding things like a vector-based search, a tag system, and a better way to navigate the site.
+Maybe a footer, more content around posts in the [notepad](/notepad) page, a newsletter, and more.
 
-## Step 14: That's It
+One thing that will **never** be added, however, is a comment section. Apologies, but I write because I want to share, not because I want to read through comments.
 
-I'm probably missing quite a few things, but that's alright. I look forward to working on this more.
+This doesn't mean I won't accept feedback, however. If you have any comments, questions, or concerns, feel free to email me at [contact@zachmontgomery.com](mailto:contact@zachmontgomery.com).
 
-And I look forward to writing more posts. See y'all later.
+I really would love to hear from you, even if it's just to share your thoughts, or simply say 'Hi.'

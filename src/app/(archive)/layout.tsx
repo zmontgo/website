@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: { default: 'Zachary Montgomery', template: '%s | Zachary Montgomery' },
-  description: `My profession is curiosity. I like to take naive passion and turn it into beautiful things.\nI am also a Christian.`,
+  title: { default: 'Archive | Zachary Montgomery', template: '%s | Archive | Zachary Montgomery' },
+  description: `Semi-permanent archive of the blog. Deleted posts will be replaced with a 410 Gone error.`,
   viewport: { width: "device-width", initialScale: 1 },
   themeColor: "#cdc79b",
 }
 
-export default function RootLayout({
+export default function ArchiveLayout({
   children,
 }: {
   children: React.ReactNode

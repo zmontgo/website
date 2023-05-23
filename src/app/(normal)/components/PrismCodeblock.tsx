@@ -28,10 +28,12 @@ export default function PrismCodeblock({ children }: { children: any }) {
           {/* <CopyButton code={code} /> */}
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line })}>
-              <span className="mr-4 text-xs select-none">{i + 1}</span>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
-              ))}
+              <div className="pl-8 flex items-center">
+                <span className="text-xs absolute select-none w-8 text-right left-0">{i + 1}</span>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
             </div>
           ))}
         </pre>
