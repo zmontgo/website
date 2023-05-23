@@ -40,8 +40,6 @@ export default async function Send(messages: Message[]): Promise<boolean> {
       Messages: messages
     });
 
-    console.log(resp)
-
     // Tech debt: emails may not have sent but the response will still be 200
     // The response will look like the Response interface above
     // Due to mailjet's disgusting type definitions, I am not dealing with this right now
