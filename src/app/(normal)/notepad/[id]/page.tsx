@@ -74,7 +74,7 @@ export default async function Post({ params }: { params: { id: string } }) {
 
   if (!post) {
     return (
-      <PostLayout url={{ url: `/notepad/${params.id}`, label: 'Post' }} title='Post not found' date='1970-01-01 00:00'>
+      <PostLayout url={{ url: `/notepad/${params.id}`, label: 'Post' }} title='Post not found' date='1970-01-01 00:00' author='Unknown' tags={[]}>
         <h1 className={'text-6xl ' + koulen.className}>Post not found.</h1>
         <p className='mt-4'>Sorry about that! Either it never existed, or something mysterious happened. For now, you can <Link href='/notepad' className='text-secondary underline'>go back</Link>.</p>
       </PostLayout>
