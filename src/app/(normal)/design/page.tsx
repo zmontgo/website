@@ -11,7 +11,12 @@ const koulen = Koulen({
 })
 
 export default async function Design() {
-  const id = await createIdentifier();
+  let id = null;
+  
+  // try {
+  //   id = await createIdentifier();
+  // } catch {}
+    
 
   return (
     <div className="flex flex-col items-center py-16">
@@ -21,7 +26,11 @@ export default async function Design() {
         <div className="mt-8">
           <h1 className={'text-6xl md:text-8xl tracking-wider ' + koulen.className}>Web Design</h1>
           <p>Carefully-wrought websites built from the ground up.</p>
-          <ContactForm id={id} />
+          { id
+            ? <ContactForm id={id} />
+            : <p className="mt-4 text-red-700 font-bold max-w-prose">Looks like we couldn&apos;t load the form. Feel free to get in touch with me via email instead.</p>
+          }
+
           <p className="mt-4">Prefer email? Don&apos;t worry, I&apos;ll respond just as quick there.</p>
           <Link href="mailto:zachmontgo@iodinedev.com" rel="noopener noreferrer" target="_blank" className="underline">zachmontgo@iodinedev.com</Link>
         </div>

@@ -1,13 +1,5 @@
 import { Client } from 'node-mailjet';
 
-if (!process.env.MAILJET_API_KEY) throw new Error('Missing MAILJET_API_KEY env var');
-if (!process.env.MAILJET_API_SECRET) throw new Error('Missing MAILJET_API_SECRET env var');
-
-const mailjet = Client.apiConnect(
-  process.env.MAILJET_API_KEY,
-  process.env.MAILJET_API_SECRET
-);
-
 interface Message {
   From: {
     Email: string;
@@ -36,6 +28,14 @@ interface Response {
 
 export default async function Send(messages: Message[]): Promise<boolean> {
   try {
+    if (!process.env.MAILJET_API_KEY) throw new Error('Missing MAILJET_API_KEY env var');
+    if (!process.env.MAILJET_API_SECRET) throw new Error('Missing MAILJET_API_SECRET env var');
+  
+    const mailjet = Client.apiConnect(
+      process.env.MAILJET_API_KEY,
+      process.env.MAILJET_API_SECRET
+    );
+
     const resp = await mailjet.post('send', { version: 'v3.1' }).request({
       Messages: messages
     });

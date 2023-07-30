@@ -12,7 +12,7 @@ export default function PostTime({ date }: { date: Date }) {
     }, intervalValue);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [formattedDate, intervalValue]);
 
   function formatDate() {
     const now = new Date();
