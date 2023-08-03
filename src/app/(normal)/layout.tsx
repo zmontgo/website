@@ -17,7 +17,7 @@ export default function NormalLayout({
         <div className="bg-primary text-secondary min-h-screen text-lg">
           {children}
         </div>
-        <Script defer data-domain="zachmontgomery.com" src="https://admin.iodinedev.com/js/script.js" />
+        <Script defer data-domain="zachmontgomery.com" src="https://plausible.zachmontgomery.com/js/script.js" />
       </body>
     </html>
   )
