@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Metadata, ResolvedMetadata } from 'next';
+import { Metadata } from 'next';
 
 import matter from 'gray-matter';
 
@@ -10,14 +10,11 @@ import PostLayout from '../../components/PostLayout'
 import FancyLink from '../../components/FancyLink'
 import PrismCodeblock from '../../components/PrismCodeblock'
 
-import AccessibilityPanel from '../../components/AccessibilityPanel'
 import BackToTop from '../../components/BackToTop'
 
 import { getPostContent, getPostNames } from '@/lib/posts'
 
 import { Koulen, Fira_Code } from 'next/font/google'
-
-import type { AccessibilityOptions } from '../../components/PostLayout';
 
 const koulen = Koulen({
   subsets: ['latin'],
@@ -84,13 +81,12 @@ export default async function Post({ params }: { params: { id: string } }) {
   const { data, content } = matter(post);
   const { title, author } = data;
 
+  const mdxContent = await MDXRemote({ source: content, components });
+
   return (
     <PostLayout url={{ url: `/notepad/${params.id}`, label: title}} title={title} author={author} date={data.date} tags={data.tags}>
       <BackToTop />
-      { /* This is a promise, but since it's a JSX component, we can't await it. */ }
-      { /* Support for this is coming in the next version of Next, but for now, we disable typescript's error. */ }
-      {/* @ts-ignore */}
-      <MDXRemote source={content} components={components} />
+      {mdxContent}
     </PostLayout>
   )
 }

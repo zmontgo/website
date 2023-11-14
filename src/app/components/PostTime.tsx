@@ -39,7 +39,6 @@ export default function PostTime({ date }: { date: Date }) {
     }
   
     // Otherwise the format is August 1, 2021
-  
     const year = date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
     const day = date.getDate();
@@ -63,5 +62,5 @@ export default function PostTime({ date }: { date: Date }) {
     setIntervalValue(offset > 0 ? offset : 1000 * 60 * 60 * 24);
   }
 
-  return <>{formattedDate ? `Posted ${formattedDate}` : "Loading..."}</>;
+  return <>{formattedDate ? `${formattedDate}` : <div className="w-32 h-4 rounded-md bg-stone-500/20 animate-pulse"></div>}</>;
 }

@@ -14,3 +14,8 @@ li ul, li ol {
   @apply gap-2 mb-1 ml-8 !important;
   @apply mt-1;
 }
+
+.vertical-rtl {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
