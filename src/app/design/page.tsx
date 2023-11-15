@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { createIdentifier } from "@/lib/identifiers";
+import { createIdentifier } from "@/app/lib/identifiers";
 
 import { Koulen } from 'next/font/google'
 // import ContactForm from "./ContactForm";

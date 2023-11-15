@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ArrowPathIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { sendMail } from './SendMail';
 
 import { Koulen } from 'next/font/google';
 
@@ -49,38 +50,34 @@ export default function ContactForm({ id }: { id: string }) {
 
 
     try {
-    if (form.name.length === 0) {
-      setFormErrors({ ...formErrors, name: 'Please enter your name.' })
-    }
+      if (id === null) {
+        return;
+      }
 
-    if (form.email.length === 0) {
-      setFormErrors({ ...formErrors, email: 'Please enter your email.' })
-    }
+      if (form.name.length === 0) {
+        setFormErrors({ ...formErrors, name: 'Please enter your name.' })
+      }
 
-    if (form.message.length === 0) {
-      setFormErrors({ ...formErrors, message: 'Please enter a message.' })
-    }
+      if (form.email.length === 0) {
+        setFormErrors({ ...formErrors, email: 'Please enter your email.' })
+      }
 
-    if (!areAllStringValuesEmpty(formErrors)) {
-      return;
-    }
+      if (form.message.length === 0) {
+        setFormErrors({ ...formErrors, message: 'Please enter a message.' })
+      }
+
+      if (!areAllStringValuesEmpty(formErrors)) {
+        return;
+      }
 
       const body = {
         id,
         ...form
       }
 
-      const resp = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      })
+      const success = await sendMail(body);
 
-      const data = await resp.json();
-
-      if (data.success) {
+      if (success) {
         setFormSuccess(true);
       } else {
         setFormFailure(true);
@@ -109,7 +106,6 @@ export default function ContactForm({ id }: { id: string }) {
       </>
     )
   }
-
 
   return (
     <>
@@ -153,7 +149,7 @@ export default function ContactForm({ id }: { id: string }) {
           <textarea name="message" id="message" cols={30} rows={5} required onChange={e => updateForm(e.target.name, e.target.value)} className={`textarea textarea-bordered border-secondary/30 hover:border-secondary/40 focus:border-secondary/70 transition-all border-2 border-dashed bg-transparent w-full`} />
           { formErrors.message.length > 0 && <p className="text-error">{formErrors.message}</p> }
         </div>
-        <button disabled={loading} className="btn btn-secondary normal-case" onClick={submit}>
+        <button disabled={loading} className="btn btn-accent normal-case" onClick={submit}>
           
           { loading
             ? <>

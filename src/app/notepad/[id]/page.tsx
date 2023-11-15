@@ -12,9 +12,10 @@ import PrismCodeblock from '../../components/PrismCodeblock'
 
 import BackToTop from '../../components/BackToTop'
 
-import { getPostContent, getPostNames } from '@/lib/posts'
+import { getPostContent, getPostNames } from '@/app/lib/posts'
 
 import { Koulen, Fira_Code } from 'next/font/google'
+import { Suspense } from 'react';
 
 const koulen = Koulen({
   subsets: ['latin'],
@@ -81,12 +82,12 @@ export default async function Post({ params }: { params: { id: string } }) {
   const { data, content } = matter(post);
   const { title, author } = data;
 
-  const mdxContent = await MDXRemote({ source: content, components });
+  // const mdxContent = await MDXRemote({ source: content, components });
 
   return (
     <PostLayout url={{ url: `/notepad/${params.id}`, label: title}} title={title} author={author} date={data.date} tags={data.tags}>
       <BackToTop />
-      {mdxContent}
+      <MDXRemote source={content} components={components} />
     </PostLayout>
   )
 }

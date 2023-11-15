@@ -1,5 +1,6 @@
 import path from "path"
 import fs from "fs"
+import 'server-only'
 
 export async function getPostNames(): Promise<{ id: string }[]> {
   // Read from the /posts directory.

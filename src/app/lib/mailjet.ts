@@ -1,4 +1,5 @@
 import { Client } from 'node-mailjet';
+import 'server-only'
 
 interface Message {
   From: {
@@ -12,18 +13,6 @@ interface Message {
   Subject: string;
   TextPart: string;
   HTMLPart: string;
-}
-
-interface Response {
-  Messages: {
-    Status: string;
-    To: {
-      Email: string;
-      MessageUUID: string;
-      MessageID: string;
-      MessageHref: string;
-    }[];
-  }[];
 }
 
 export default async function Send(messages: Message[]): Promise<boolean> {
@@ -40,9 +29,8 @@ export default async function Send(messages: Message[]): Promise<boolean> {
       Messages: messages
     });
 
-    // Tech debt: emails may not have sent but the response will still be 200
-    // The response will look like the Response interface above
-    // Due to mailjet's disgusting type definitions, I am not dealing with this right now
+    console.log(resp)
+    console.log(resp.response)
 
     return true;
   } catch (error) {

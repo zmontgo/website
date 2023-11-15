@@ -1,31 +1,26 @@
-# Use a multi-stage build process. This will allow us to install dependencies and build our application in one stage, and then copy over the built application into a new image.
+# Use an official Node.js runtime as the base image
+FROM node:18
 
-# Stage 1: Base
-FROM node:18-alpine AS base
+# Set the working directory in the container
 WORKDIR /app
-ENV NODE_ENV production
 
-# Copy package files and install dependencies
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
 
-# Stage 2: Builder
-FROM base AS builder
+# Install the application's dependencies
+RUN yarn install
+
+# Copy the rest of the application code
 COPY . .
+
+ENV NODE_ENV=production
+RUN yarn prisma generate
+
+# Build the Next.js application
 RUN yarn next build
 
-# Stage 3: Runner
-FROM node:18-alpine AS runner
-WORKDIR /app
+# Expose port 3000 for the application
 EXPOSE 3000
 
-# Copy over the built application from the builder stage.
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/yarn.lock ./yarn.lock
-
-# Install production dependencies only
-RUN yarn install --frozen-lockfile --production
-
-CMD [ "yarn", "start" ]
+# Start the application
+CMD ["yarn", "next", "start"]
