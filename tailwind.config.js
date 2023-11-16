@@ -27,7 +27,8 @@ module.exports = {
           secondary: '#1a1601',
           "secondary-content": "#e7e5e4",
           codeblocks: '#282A36',
-          
+          accent: '#4E632C',     
+          'accent-content': '#E4EDD4',     
         }
       }
     ]
